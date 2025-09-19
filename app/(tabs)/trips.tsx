@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
 
-export default function TabsHome() {
+export default function TripsScreen() {
   return <View>
     <Text>
-    Index Page
+  tripsScreen
     </Text>
     </View>;
 }
