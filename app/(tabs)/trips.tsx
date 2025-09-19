@@ -1,9 +1,14 @@
-import { Text, View } from "react-native";
+import { mockedTrips } from "@/scripts/trip";
+import { ScrollView, Text } from "react-native";
 
 export default function TripsScreen() {
-  return <View>
-    <Text>
-  tripsScreen
-    </Text>
-    </View>;
+
+  return (<ScrollView>
+    {mockedTrips.map((t) => (
+      <Text key={t.id}>
+        {t.from} 
+        {t.to}
+      </Text>
+    ))}
+    </ScrollView>)
 }
