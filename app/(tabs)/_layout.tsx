@@ -8,7 +8,7 @@ export default function TabsLayout() {
   return (
     <Tabs screenOptions={{ headerShown: false }}>
       <Tabs.Screen
-        name="(tickets)"
+        name="(get$$$)"
         options={{
           title: "Get $$$",
           tabBarIcon: (props) => (
@@ -21,9 +21,9 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="trips"
+        name="build"
         options={{
-          title: "Trips",
+          title: "Build",
           tabBarIcon: (props) => (
             <View
               style={{

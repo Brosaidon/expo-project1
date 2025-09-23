@@ -1,4 +1,4 @@
-import { mockedTrips } from "@/scripts/trip";
+import { mockedBuildings } from "@/scripts/buildings";
 import { useRouter } from "expo-router";
 import { Pressable, ScrollView, Text } from "react-native";
 
@@ -7,17 +7,17 @@ export default function TripsScreen() {
 
   return (
     <ScrollView>
-      {mockedTrips.map((t) => (
+      {mockedBuildings.map((b) => (
         <Pressable
-          onPress={() => router.push(`/trips/${t.id}`)}
-          key={t.id}
+          onPress={() => router.push(`/build/${b.id}`)}
+          key={b.id}
           style={{ flex: 1, flexDirection: "column", padding: 10 }}
         >
           <Text style={{ fontSize: 20, flex: 1 }}>
-            {t.from}
-            {t.to}
+            {b.name}+ " "+
+            {b.category}
           </Text>
-          <Text>{t.price}</Text>
+          <Text>{b.price}</Text>
         </Pressable>
       ))}
     </ScrollView>
