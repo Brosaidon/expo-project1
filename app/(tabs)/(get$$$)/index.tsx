@@ -17,7 +17,7 @@ export default function TabsHome() {
 
   return (
     <View>
-      <Pressable onPress={multicrease}>
+      <Pressable onPress={multicrease} style={{ flexDirection: "row" }}>
         <Image
           source={require("../../../assets/images/favicon.png")}
           style={{ width: 100, height: 100 }}
@@ -28,6 +28,7 @@ export default function TabsHome() {
           source={require("../../../assets/images/favicon.png")}
           style={{ width: 100, height: 100 }}
         />
+        <Text>Some text here...</Text>
       </Pressable>
       <Pressable onPress={decrease}>
         <Image

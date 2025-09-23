@@ -2,7 +2,7 @@ import { mockedBuildings } from "@/scripts/buildings";
 import { useRouter } from "expo-router";
 import { Pressable, ScrollView, Text } from "react-native";
 
-export default function TripsScreen() {
+export default function BuildingsScreen() {
   const router = useRouter();
 
   return (
