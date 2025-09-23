@@ -1,5 +1,6 @@
+import { ProgressBar } from "@/components/progress-bar";
 import { useState } from "react";
-import { Button, Text, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 
 export default function TabsHome() {
   const [value, setValue] = useState(0);
@@ -16,10 +17,26 @@ export default function TabsHome() {
 
   return (
     <View>
-      <Button title="GET!" onPress={multicrease} />
-      <Button title="INCREASE" onPress={increase} />
-      <Button title="FOR... well" onPress={decrease} />
+      <Pressable onPress={multicrease}>
+        <Image
+          source={require("../../../assets/images/favicon.png")}
+          style={{ width: 100, height: 100 }}
+        />
+      </Pressable>
+      <Pressable onPress={increase}>
+        <Image
+          source={require("../../../assets/images/favicon.png")}
+          style={{ width: 100, height: 100 }}
+        />
+      </Pressable>
+      <Pressable onPress={decrease}>
+        <Image
+          source={require("../../../assets/images/favicon.png")}
+          style={{ width: 100, height: 100 }}
+        />
+      </Pressable>
       <Text>{value}</Text>
+      <ProgressBar progress={value} />
     </View>
   );
 }

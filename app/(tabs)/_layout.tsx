@@ -10,7 +10,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="(tickets)"
         options={{
-          title: "Tickets",
+          title: "Get $$$",
           tabBarIcon: (props) => (
             <FontAwesome6
               name="money-check-dollar"
