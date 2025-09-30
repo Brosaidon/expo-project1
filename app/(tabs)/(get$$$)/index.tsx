@@ -1,6 +1,7 @@
+import Gyros from "@/components/gyros";
 import { ProgressBar } from "@/components/progress-bar";
 import { useState } from "react";
-import { Image, Pressable, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function TabsHome() {
   const [value, setValue] = useState(0);
@@ -16,28 +17,40 @@ export default function TabsHome() {
   }
 
   return (
-    <View>
-      <Pressable onPress={multicrease} style={{ flexDirection: "row" }}>
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
+        <Gyros />
+      </View>
+      <Pressable onPress={increase} style={styles.clickerRow}>
         <Image
-          source={require("../../../assets/images/favicon.png")}
-          style={{ width: 100, height: 100 }}
+          source={require("../../../assets/images/gold.webp")}
+          style={{ width: 100, height: 100, tintColor: "#FFD700" }}
         />
+        <ProgressBar progress={value} />
       </Pressable>
-      <Pressable onPress={increase}>
+      <Pressable onPress={increase} style={styles.clickerRow}>
         <Image
-          source={require("../../../assets/images/favicon.png")}
-          style={{ width: 100, height: 100 }}
+          source={require("../../../assets/images/log.webp")}
+          style={{ width: 100, height: 100, tintColor: "#8d3a0344" }}
         />
-        <Text>Some text here...</Text>
+        <ProgressBar progress={value} />
       </Pressable>
-      <Pressable onPress={decrease}>
+      <Pressable onPress={increase} style={styles.clickerRow}>
         <Image
           source={require("../../../assets/images/favicon.png")}
           style={{ width: 100, height: 100 }}
         />
+        <ProgressBar progress={value} />
       </Pressable>
       <Text>{value}</Text>
-      <ProgressBar progress={value} />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  clickerRow: {
+    backgroundColor: "#003333",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+});
