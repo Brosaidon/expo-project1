@@ -1,10 +1,18 @@
 import Gyros from "@/components/gyros";
 import { ProgressBar } from "@/components/progress-bar";
 import { useBank } from "@/context/bankProvider";
+import { useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+
+const [goldKey, setGoldKey] = useState(0);
+
+function startGoldProgress() {
+  setGoldKey((prev) => prev + 1);
+}
 
 export default function TabsHome() {
   const { bank, increaseGold, increaseTree } = useBank();
+
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
@@ -14,12 +22,12 @@ export default function TabsHome() {
         <Text>{bank.gold}</Text>
         <Text>{bank.tree}</Text>
       </View>
-      <Pressable onPress={() => increaseGold()} style={styles.clickerRow}>
+      <Pressable onPress={startGoldProgress} style={styles.clickerRow}>
         <Image
           source={require("../../../assets/images/gold.webp")}
           style={{ width: 100, height: 100, tintColor: "#FFD700" }}
         />
-        <ProgressBar />
+        <ProgressBar duration={4000} autoFill onComplete={increaseGold} />
       </Pressable>
       <Pressable onPress={() => increaseTree()} style={styles.clickerRow}>
         <Image

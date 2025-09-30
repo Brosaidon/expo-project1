@@ -1,29 +1,43 @@
-import { useBank } from "@/context/bankProvider";
 import { useEffect, useRef } from "react";
 import { Animated, StyleSheet, View } from "react-native";
 
 type ProgressBarProps = {
-  duration?: number;
+  duration?: number; //tid att fylla progressBar.
+  width?: number; //hur lång bar.
+  onComplete?: () => void; //vad ska hända.
+  autoFill?: Boolean; //ska den köras automatiskt?
+  progress?: number; //
 };
 
-export function ProgressBar({ duration = 5000 }: ProgressBarProps) {
-  const { increaseGold } = useBank();
-  const progress = useRef(new Animated.Value(0)).current;
+export function ProgressBar({
+  duration = 5000,
+  width = 150,
+  onComplete,
+  autoFill = false,
+  progress: externalProgress,
+}: ProgressBarProps) {
+  const internalProgress = useRef(new Animated.Value(0)).current;
+  const animatedWidth = externalProgress
+    ? externalProgress * width
+    : internalProgress;
 
   useEffect(() => {
-    Animated.timing(progress, {
-      toValue: 150,
-      duration,
-      useNativeDriver: false,
-    }).start(() => {
-      increaseGold();
-      progress.setValue(0);
-    });
-  }, []);
+    if (autoFill) {
+      Animated.timing(internalProgress, {
+        toValue: width,
+        duration,
+        useNativeDriver: false,
+      }).start(() => {
+        if (onComplete) onComplete();
+
+        //internalProgress.setValue(0);
+      });
+    }
+  }, [autoFill]);
 
   return (
     <View style={styles.barOuter}>
-      <Animated.View style={[styles.barInner, { width: progress }]} />
+      <Animated.View style={[styles.barInner, { width: animatedWidth }]} />
     </View>
   );
 }
