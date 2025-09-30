@@ -1,8 +1,11 @@
+import { useBank } from "@/context/bankProvider";
 import { Gyroscope } from "expo-sensors";
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 export default function Gyros() {
   const [data, setData] = useState({ x: 0, y: 0, z: 0 });
+  const { bank, increaseTree } = useBank();
+  const SENSITIVITY = 1.5;
 
   useEffect(() => {
     const subscription = Gyroscope.addListener((gyroData) => {
@@ -13,7 +16,11 @@ export default function Gyros() {
 
     return () => subscription.remove();
   }, []);
-  console.log(data.x);
+  useEffect(() => {
+    if (data.x > SENSITIVITY || data.y > SENSITIVITY || data.z > SENSITIVITY) {
+      increaseTree();
+    }
+  }, [data]);
 
   return (
     <View style={styles.container}>
