@@ -19,14 +19,14 @@ export default function TabsHome() {
           source={require("../../../assets/images/gold.webp")}
           style={{ width: 100, height: 100, tintColor: "#FFD700" }}
         />
-        <ProgressBar progress={bank.gold} />
+        <ProgressBar />
       </Pressable>
       <Pressable onPress={() => increaseTree()} style={styles.clickerRow}>
         <Image
           source={require("../../../assets/images/log.webp")}
           style={{ width: 100, height: 100, tintColor: "#8d3a0344" }}
         />
-        <ProgressBar progress={bank.tree} />
+        <ProgressBar />
       </Pressable>
     </View>
   );

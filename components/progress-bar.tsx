@@ -1,12 +1,29 @@
-import { StyleSheet, View } from "react-native";
+import { useBank } from "@/context/bankProvider";
+import { useEffect, useRef } from "react";
+import { Animated, StyleSheet, View } from "react-native";
 
 type ProgressBarProps = {
-  progress: number;
+  duration?: number;
 };
-export function ProgressBar({ progress }: ProgressBarProps) {
+
+export function ProgressBar({ duration = 5000 }: ProgressBarProps) {
+  const { increaseGold } = useBank();
+  const progress = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(progress, {
+      toValue: 150,
+      duration,
+      useNativeDriver: false,
+    }).start(() => {
+      increaseGold();
+      progress.setValue(0);
+    });
+  }, []);
+
   return (
     <View style={styles.barOuter}>
-      <View style={[{ width: progress }, styles.barInner]} />
+      <Animated.View style={[styles.barInner, { width: progress }]} />
     </View>
   );
 }
