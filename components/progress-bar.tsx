@@ -33,7 +33,7 @@ export function ProgressBar({
         //internalProgress.setValue(0);
       });
     }
-  }, [autoFill]);
+  }, [externalProgress, autoFill, onComplete]);
 
   return (
     <View style={styles.barOuter}>
