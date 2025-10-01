@@ -13,17 +13,19 @@ export default function Gyros({ onGyroTrigger }: GyrosProps) {
   useEffect(() => {
     const subscription = Gyroscope.addListener((gyroData) => {
       setData(gyroData);
+      if (
+        gyroData.x > SENSITIVITY ||
+        gyroData.y > SENSITIVITY ||
+        gyroData.z > SENSITIVITY
+      ) {
+        onGyroTrigger();
+      }
     });
 
     Gyroscope.setUpdateInterval(500);
 
     return () => subscription.remove();
   }, []);
-  useEffect(() => {
-    if (data.x > SENSITIVITY || data.y > SENSITIVITY || data.z > SENSITIVITY) {
-      onGyroTrigger();
-    }
-  }, [data]);
 
   return (
     <View style={styles.container}>

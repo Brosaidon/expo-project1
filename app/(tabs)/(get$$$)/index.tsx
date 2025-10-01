@@ -1,6 +1,7 @@
 import Gyros from "@/components/gyros";
 import { ProgressBar } from "@/components/progress-bar";
 import { useBank } from "@/context/bankProvider";
+import { mockedBuildings } from "@/scripts/buildings";
 import { useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
@@ -8,11 +9,11 @@ export default function TabsHome() {
   const [goldKey, setGoldKey] = useState(0);
   const [treeKey, setTreeKey] = useState(0);
   const [treeProgress, setTreeProgress] = useState(0);
+  const { bank, increaseGold, increaseTree } = useBank();
 
   function startGoldProgress() {
     setGoldKey((prev) => prev + 1);
   }
-  const { bank, increaseGold, increaseTree } = useBank();
 
   return (
     <View style={{ flex: 1 }}>
@@ -20,18 +21,34 @@ export default function TabsHome() {
         <Gyros
           onGyroTrigger={() => {
             setTreeProgress((prev) => {
+              if (bank.wizardTower) {
+                const newProgress = prev + 0.25; // 1 av 5
+
+                if (newProgress >= 1) {
+                  increaseTree();
+                  return 0;
+                }
+                return newProgress;
+              }
               const newProgress = prev + 0.2; // 1 av 5
+
               if (newProgress >= 1) {
+                increaseTree();
                 return 0;
               }
               return newProgress;
             });
           }}
         />
-      </View>
-      <View>
-        <Text>{bank.gold}</Text>
-        <Text>{bank.tree}</Text>
+        <View>
+          <Text>{bank.gold}</Text>
+          <Text>{bank.tree}</Text>
+          {mockedBuildings.map((b) => (
+            <Text key={b.bankRef}>
+              {b.name} : {bank[b.bankRef] ? "Owned" : "Not Owned"}
+            </Text>
+          ))}
+        </View>
       </View>
       <Pressable onPress={startGoldProgress} style={styles.clickerRow}>
         <Image
@@ -47,7 +64,7 @@ export default function TabsHome() {
       </Pressable>
       <View style={styles.clickerRow}>
         <Image
-          source={require("../../../assets/images/log.webp")}
+          source={require("@/assets/images/log.webp")}
           style={{ width: 100, height: 100, tintColor: "#8d3a0344" }}
         />
         <ProgressBar progress={treeProgress} onComplete={increaseTree} />
