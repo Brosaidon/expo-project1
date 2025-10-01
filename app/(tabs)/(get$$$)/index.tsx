@@ -57,7 +57,7 @@ export default function TabsHome() {
           progress={treeProgress}
           onComplete={() => {
             increaseTree();
-            setTreeProgress(0);
+            setTreeProgress(0); // reset bar
           }}
         />
       </View>

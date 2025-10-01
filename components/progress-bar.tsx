@@ -35,6 +35,12 @@ export function ProgressBar({
     }
   }, [externalProgress, autoFill, onComplete]);
 
+  useEffect(() => {
+    if (externalProgress === 1 && onComplete) {
+      onComplete();
+    }
+  }, [externalProgress, onComplete]);
+
   return (
     <View style={styles.barOuter}>
       <Animated.View style={[styles.barInner, { width: animatedWidth }]} />
