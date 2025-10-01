@@ -1,6 +1,5 @@
-import type { Bank } from "@/context/bankProvider";
+import type { BankKey } from "@/context/bankProvider";
 
-type BankKey = keyof Bank;
 interface Building {
     id: string;
     name: string;
@@ -39,7 +38,7 @@ export const mockedBuildings: Building[] =
   {
     id: "4",
     name: "Dwarven Mine",
-    bankRef:"elvenTreehouse",
+    bankRef:"dwarvenMine",
     category: "Resource",
     gold: 40,
     tree: 40,

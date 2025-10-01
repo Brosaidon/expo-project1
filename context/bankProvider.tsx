@@ -14,11 +14,12 @@ interface BankContextType {
   bank: Bank;
   increaseGold: () => void;
   increaseTree: () => void;
-  buy: (ref: string) => void;
+  buyBuilding: (ref: BankKey, cost: { gold: number; tree: number }) => void; //QQQ varför måste det stå number?
 }
 
 const BankContext = createContext<BankContextType | undefined>(undefined);
 
+export type BankKey = keyof Bank;
 export function BankProvider({ children }: { children: ReactNode }) {
   const [bank, setBank] = useState<Bank>({ gold: 0, tree: 0 });
 
@@ -29,15 +30,24 @@ export function BankProvider({ children }: { children: ReactNode }) {
     setBank((prev) => ({ ...prev, tree: prev.tree + 1 }));
   }
 
-  function buy(ref: string) {
-    setBank((prev) => ({
-      ...prev,
-      [ref]: true,
-    }));
+  function buyBuilding(ref: BankKey, cost: { gold: number; tree: number }) {
+    setBank((prev) => {
+      if (prev[ref] || prev.gold < cost.gold || prev.tree < cost.tree) {
+        return prev;
+      }
+      return {
+        ...prev,
+        [ref]: true,
+        gold: prev.gold - cost.gold,
+        tree: prev.tree - cost.tree,
+      };
+    });
   }
 
   return (
-    <BankContext.Provider value={{ bank, increaseGold, increaseTree, buy }}>
+    <BankContext.Provider
+      value={{ bank, increaseGold, increaseTree, buyBuilding }}
+    >
       {children}
     </BankContext.Provider>
   );
