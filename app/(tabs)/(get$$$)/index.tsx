@@ -21,22 +21,8 @@ export default function TabsHome() {
         <Gyros
           onGyroTrigger={() => {
             setTreeProgress((prev) => {
-              if (bank.wizardTower) {
-                const newProgress = prev + 0.25; // 1 av 5
-
-                if (newProgress >= 1) {
-                  increaseTree();
-                  return 0;
-                }
-                return newProgress;
-              }
               const newProgress = prev + 0.2; // 1 av 5
-
-              if (newProgress >= 1) {
-                increaseTree();
-                return 0;
-              }
-              return newProgress;
+              return newProgress > 1 ? 1 : newProgress;
             });
           }}
         />
