@@ -53,7 +53,13 @@ export default function TabsHome() {
           source={require("@/assets/images/log.webp")}
           style={{ width: 100, height: 100, tintColor: "#8d3a0344" }}
         />
-        <ProgressBar progress={treeProgress} onComplete={increaseTree} />
+        <ProgressBar
+          progress={treeProgress}
+          onComplete={() => {
+            increaseTree();
+            setTreeProgress(0);
+          }}
+        />
       </View>
     </View>
   );
