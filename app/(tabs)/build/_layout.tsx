@@ -1,6 +1,6 @@
 import { mockedBuildings } from "@/scripts/buildings";
 import { Stack } from "expo-router";
-
+// commit icon 💎 🪒
 export default function BuildLayout() {
   return (
     <Stack>

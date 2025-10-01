@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Animated, StyleSheet, View } from "react-native";
-
+// commit icon 🅱️
 type ProgressBarProps = {
   duration?: number; //tid att fylla progressBar.
   width?: number; //hur lång bar.

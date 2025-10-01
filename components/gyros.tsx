@@ -1,7 +1,7 @@
 import { Gyroscope } from "expo-sensors";
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-
+// commit icon 🌈
 type GyrosProps = {
   onGyroTrigger: () => void;
 };
