@@ -25,9 +25,15 @@ export default function TabsHome() {
   return (
     <ImageBackground
       source={require("@/assets/images/bg.png")}
-      style={styles.Background}
+      style={styles.background}
       resizeMode="cover"
     >
+      {bank.wizardTower}
+      <Image
+        source={require("@/assets/images/wt.png")}
+        style={styles.wizardTower}
+        resizeMode="contain"
+      />
       <View style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
           <Gyros
@@ -84,9 +90,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  Background: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+  background: {
+    flex: 1, // <-- fills the entire screen
+    width: "100%", // stretch horizontally
+    height: "100%",
+  },
+  wizardTower: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
   },
 });
