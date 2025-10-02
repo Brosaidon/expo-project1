@@ -2,15 +2,9 @@ import Gyros from "@/components/gyros";
 import { ProgressBar } from "@/components/progress-bar";
 import { useBank } from "@/context/bankProvider";
 import { mockedBuildings } from "@/scripts/buildings";
+import { Image, ImageBackground } from "expo-image";
 import { useState } from "react";
-import {
-  Image,
-  ImageBackground,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function TabsHome() {
   const [goldKey, setGoldKey] = useState(0);
@@ -26,13 +20,13 @@ export default function TabsHome() {
     <ImageBackground
       source={require("@/assets/images/bg.png")}
       style={styles.background}
-      resizeMode="cover"
+      contentFit="fill"
     >
       {bank.wizardTower && (
         <Image
           source={require("@/assets/images/wt.png")}
           style={styles.wizardTower}
-          resizeMode="contain"
+          contentFit="fill"
         />
       )}
       <View style={{ flex: 1 }}>
@@ -46,8 +40,6 @@ export default function TabsHome() {
             }}
           />
           <View>
-            <Text>{bank.gold}</Text>
-            <Text>{bank.tree}</Text>
             {mockedBuildings.map((b) => (
               <Text key={b.bankRef}>
                 {b.name} : {bank[b.bankRef] ? "Owned" : "Not Owned"}

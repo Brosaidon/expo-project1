@@ -14,7 +14,7 @@ interface BankContextType {
   bank: Bank;
   increaseGold: () => void;
   increaseTree: () => void;
-  buyBuilding: (ref: BankKey, cost: { gold: number; tree: number }) => void; //QQQ varför måste det stå number?
+  buyBuilding: (ref: BankKey, cost: { gold: number; tree: number }) => void; //varför måste det stå number?
 }
 
 const BankContext = createContext<BankContextType | undefined>(undefined);

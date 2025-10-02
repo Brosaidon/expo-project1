@@ -18,7 +18,7 @@ export default function Gyros({ onGyroTrigger }: GyrosProps) {
         gyroData.y > SENSITIVITY ||
         gyroData.z > SENSITIVITY
       ) {
-        onGyroTrigger();
+        onGyroTrigger(); // här skulle man kunna kalla på Listener direkt istället för "setData".
       }
     });
 

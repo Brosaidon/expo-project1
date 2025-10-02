@@ -1,3 +1,4 @@
+import ResorceBar from "@/components/resorceBar";
 import { BankProvider } from "@/context/bankProvider";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -11,6 +12,7 @@ export default function BuildLayout() {
       <BankProvider>
         <Stack />
         <StatusBar style="auto" />
+        <ResorceBar />
       </BankProvider>
     </>
   );
