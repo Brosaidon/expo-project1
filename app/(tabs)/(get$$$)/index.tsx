@@ -28,12 +28,13 @@ export default function TabsHome() {
       style={styles.background}
       resizeMode="cover"
     >
-      {bank.wizardTower}
-      <Image
-        source={require("@/assets/images/wt.png")}
-        style={styles.wizardTower}
-        resizeMode="contain"
-      />
+      {bank.wizardTower && (
+        <Image
+          source={require("@/assets/images/wt.png")}
+          style={styles.wizardTower}
+          resizeMode="contain"
+        />
+      )}
       <View style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
           <Gyros
