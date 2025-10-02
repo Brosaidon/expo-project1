@@ -49,8 +49,8 @@ export default function TabsHome() {
         </View>
         <Pressable onPress={startGoldProgress} style={styles.clickerRow}>
           <Image
-            source={require("../../../assets/images/gold.webp")}
-            style={{ width: 100, height: 100, tintColor: "#FFD700" }}
+            source={require("@/assets/images/gold.webp")}
+            style={{ width: 70, height: 70, tintColor: "#FFD700" }}
           />
           <ProgressBar
             key={goldKey}
@@ -62,7 +62,7 @@ export default function TabsHome() {
         <View style={styles.clickerRow}>
           <Image
             source={require("@/assets/images/log.webp")}
-            style={{ width: 100, height: 100, tintColor: "#8d3a0344" }}
+            style={{ width: 70, height: 70, tintColor: "#8d3a0344" }}
           />
           <ProgressBar
             progress={treeProgress}
@@ -79,8 +79,8 @@ export default function TabsHome() {
 
 const styles = StyleSheet.create({
   clickerRow: {
-    backgroundColor: "#003333",
     flexDirection: "row",
+    justifyContent: "space-evenly",
     alignItems: "center",
   },
   background: {
