@@ -1,3 +1,4 @@
+import { useBank } from "@/context/bankProvider";
 import { mockedBuildings } from "@/scripts/buildings";
 import { useRouter } from "expo-router";
 import {
@@ -12,6 +13,7 @@ import {
 
 export default function BuildingsScreen() {
   const router = useRouter();
+  const { bank } = useBank();
 
   return (
     <ImageBackground
@@ -19,11 +21,13 @@ export default function BuildingsScreen() {
       style={styles.background}
       resizeMode="cover"
     >
-      <Image
-        source={require("@/assets/images/wt.png")}
-        style={styles.wizardTower}
-        resizeMode="contain"
-      />
+      {bank.wizardTower && (
+        <Image
+          source={require("@/assets/images/wt.png")}
+          style={styles.wizardTower}
+          resizeMode="contain"
+        />
+      )}
       <ScrollView>
         {mockedBuildings.map((b) => (
           <Pressable
