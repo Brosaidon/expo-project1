@@ -28,14 +28,14 @@ export default function BuildingsScreen() {
           resizeMode="contain"
         />
       )}
-      <ScrollView>
+      <ScrollView style={{ marginTop: 80 }}>
         {mockedBuildings.map((b) => (
           <Pressable
             onPress={() => router.push(`/build/${b.id}`)}
             key={b.id}
             style={{ flex: 1, flexDirection: "column", padding: 10 }}
           >
-            <Text style={{ fontSize: 20, flex: 1 }}>
+            <Text style={{ fontSize: 20, flex: 1, color: "#ffff" }}>
               {b.name}+ " "+
               {b.category}
             </Text>
@@ -50,7 +50,7 @@ export default function BuildingsScreen() {
               <View style={{ flexDirection: "row" }}>
                 <Image
                   source={require("../../../assets/images/log.webp")}
-                  style={{ width: 20, height: 20, tintColor: "#8d3a0344" }}
+                  style={{ width: 20, height: 20, tintColor: "#a6480aff" }}
                 />
                 <Text>{b.tree}</Text>
               </View>
@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
     width: 90,
   },
   background: {
-    flex: 1, // <-- fills the entire screen
-    width: "100%", // stretch horizontally
+    flex: 1,
+    width: "100%",
     height: "100%",
   },
   wizardTower: {

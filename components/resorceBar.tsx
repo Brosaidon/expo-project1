@@ -8,7 +8,7 @@ export default function ResorceBar() {
   const { bank } = useBank();
 
   return (
-    <BlurView intensity={50} tint="dark" style={styles.resorceBar}>
+    <BlurView intensity={50} tint="light" style={styles.resorceBar}>
       <View style={styles.barComponent}>
         <Image
           source={require("@/assets/images/gold.webp")}
@@ -19,7 +19,7 @@ export default function ResorceBar() {
       <View style={styles.barComponent}>
         <Image
           source={require("@/assets/images/log.webp")}
-          style={{ width: 20, height: 20, tintColor: "#8d3a0344" }}
+          style={{ width: 20, height: 20, tintColor: "#a6480aff" }}
         />
         <Text>{bank.tree}</Text>
       </View>
@@ -29,7 +29,7 @@ export default function ResorceBar() {
 const styles = StyleSheet.create({
   resorceBar: {
     position: "absolute",
-    top: 75,
+    top: 100,
     left: 0,
     right: 0,
     flexDirection: "row",

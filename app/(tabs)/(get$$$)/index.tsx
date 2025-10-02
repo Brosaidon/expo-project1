@@ -2,6 +2,7 @@ import Gyros from "@/components/gyros";
 import { ProgressBar } from "@/components/progress-bar";
 import { useBank } from "@/context/bankProvider";
 import { mockedBuildings } from "@/scripts/buildings";
+import { BlurView } from "expo-blur";
 import { Image, ImageBackground } from "expo-image";
 import { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
@@ -47,31 +48,33 @@ export default function TabsHome() {
             ))}
           </View>
         </View>
-        <Pressable onPress={startGoldProgress} style={styles.clickerRow}>
-          <Image
-            source={require("@/assets/images/gold.webp")}
-            style={{ width: 70, height: 70, tintColor: "#FFD700" }}
-          />
-          <ProgressBar
-            key={goldKey}
-            duration={4000}
-            autoFill
-            onComplete={increaseGold}
-          />
-        </Pressable>
-        <View style={styles.clickerRow}>
-          <Image
-            source={require("@/assets/images/log.webp")}
-            style={{ width: 70, height: 70, tintColor: "#8d3a0344" }}
-          />
-          <ProgressBar
-            progress={treeProgress}
-            onComplete={() => {
-              increaseTree();
-              setTreeProgress(0); // reset bar
-            }}
-          />
-        </View>
+        <BlurView intensity={50} tint="light" style={styles.buttonContainer}>
+          <Pressable onPress={startGoldProgress} style={styles.clickerRow}>
+            <Image
+              source={require("@/assets/images/gold.webp")}
+              style={{ width: 70, height: 70, tintColor: "#FFD700" }}
+            />
+            <ProgressBar
+              key={goldKey}
+              duration={4000}
+              autoFill
+              onComplete={increaseGold}
+            />
+          </Pressable>
+          <View style={styles.clickerRow}>
+            <Image
+              source={require("@/assets/images/log.webp")}
+              style={{ width: 70, height: 70, tintColor: "#a6480aff" }}
+            />
+            <ProgressBar
+              progress={treeProgress}
+              onComplete={() => {
+                increaseTree();
+                setTreeProgress(0); // reset bar
+              }}
+            />
+          </View>
+        </BlurView>
       </View>
     </ImageBackground>
   );
@@ -84,8 +87,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   background: {
-    flex: 1, // <-- fills the entire screen
-    width: "100%", // stretch horizontally
+    flex: 1,
+    width: "100%",
     height: "100%",
   },
   wizardTower: {
@@ -95,4 +98,5 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
+  buttonContainer: {},
 });
