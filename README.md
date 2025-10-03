@@ -2,13 +2,39 @@ Detta är ett projekt från Apputvecklings Kurs från HY Systemutveckling. Utvec
 Använder ReactNative och Expo.
 expo komponenter som jag har använt i projektet:
 expo
+
 -router
--status-bar
--image
--sensors (gyroscope)
+-status-bar  
+-image  
+-sensors (gyroscope)  
 -blur
 
-Appen är en simpel "cookie klicker", där man kan samla resurser som man sedan kan avnända för att bygga byggnader i sitt lilla "koockie klicker landskap".
+RN-komponenter
+
+- View
+- ScrollView
+- Pressable
+- Animate
+
+  Appen är en simpel "cookie klicker", där man kan samla resurser som man sedan kan avnända för att bygga byggnader i sitt lilla "koockie klicker landskap".
+
+Krav för godkänt:
+
+- 1.[x] Projektet använder minst 4 stycken RN-komponenter och minst 4 stycken Expo komponenter.
+- 2.[x] De utvalda komponenterna MÅSTE antecknas i README filen tillsammans med enlista över genomförda krav.
+- 3.[x] React Navigation används för att skapa en bättre upplevelse i appen.
+- 4.[x] Git & GitHub har använts
+- 5.[x] Projektmappen innehåller en README.md fil - (läs ovan för mer info)
+- 6.[x] Uppgiften lämnas in i tid!
+- 7.[x] Muntlig presentation är genomförd.
+
+Krav för väl godkänt:
+
+1. Alla punkter för godkänt är uppfyllda
+2. Ytterligare en valfri extern modul används i projektet (ex. react-hook-form).
+3. Appen ska prata med ett Web-API för att hämta data.
+4. Appen ska förberedas för lansering till en Appstore (Deadline samma dag som kursen
+   slutar)
 
 Nedanför är Expo's template Readme.
 
