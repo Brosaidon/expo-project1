@@ -1,5 +1,12 @@
-Detta är ett project från Apputvecklings Kurs från HY Systemutveckling. Utvecklad av Josef Lidbeck.
+Detta är ett projekt från Apputvecklings Kurs från HY Systemutveckling. Utvecklad av Josef Lidbeck.
 Använder ReactNative och Expo.
+expo komponenter som jag har använt i projektet:
+expo
+-router
+-status-bar
+-image
+-sensors (gyroscope)
+-blur
 
 Appen är en simpel "cookie klicker", där man kan samla resurser som man sedan kan avnända för att bygga byggnader i sitt lilla "koockie klicker landskap".
 
